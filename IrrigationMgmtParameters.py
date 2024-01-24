@@ -4,6 +4,7 @@
 # AquaCrop
 #
 import os
+from venv import logger
 import numpy as np
 import pcraster as pcr
 import VirtualOS as vos

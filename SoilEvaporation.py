@@ -1,5 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+'''
+line 103 
+var are not defined in this function they are probaby integrated from another function
+    def adjust_potential_soil_evaporation_for_irrigation(self, EsPot):
+        EsPotIrr = np.copy(EsPot)
+        cond1 = ((irr_depth > 0) & (irr_method != 4)) 
+        cond11 = (cond1 & ((prec > 0) | (surface_storage > 0)))
+        EsPotIrr[cond11] = EsPot[cond11]
+        cond12 = (cond1 & np.logical_not(cond11))
+        EsPotIrr[cond12] = (EsPot * (wet_surf / 100))[cond12]  # TODO: more informative name for wet_surf
+        return EsPotIrr
+'''
 
 # AquaCrop crop growth model
 
@@ -100,7 +112,7 @@ class SoilEvaporation(object):
 
     def adjust_potential_soil_evaporation_for_irrigation(self, EsPot):
         EsPotIrr = np.copy(EsPot)
-        cond1 = ((irr_depth > 0) & (irr_method != 4))
+        cond1 = ((irr_depth > 0) & (irr_method != 4)) 
         cond11 = (cond1 & ((prec > 0) | (surface_storage > 0)))
         EsPotIrr[cond11] = EsPot[cond11]
         cond12 = (cond1 & np.logical_not(cond11))

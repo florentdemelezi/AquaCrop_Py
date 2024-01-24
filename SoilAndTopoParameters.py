@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
+# import pcraster as pcr is not installed 
 # AquaCrop
 #
 import os

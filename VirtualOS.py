@@ -1124,38 +1124,58 @@ def isSameClone(inputMapFileName,cloneMapFileName):
 #     stdout = None; del stdout
 #     stderr = None; del stderr
 #     n = gc.collect() ; del gc.garbage[:] ; n = None ; del n
-
-def getFullPath(inputPath,absolutePath,completeFileName = True):
+def getFullPath(inputPath, absolutePath, completeFileName=True):
     # 19 Mar 2013 created by Edwin H. Sutanudjaja
     # Function: to get the full absolute path of a folder or a file
-          
+
     # replace all \ with /
     inputPath = str(inputPath).replace("\\", "/")
     absolutePath = str(absolutePath).replace("\\", "/")
-    
+
     # tuple of suffixes (extensions) that can be used:
-    suffix = ('/','_','.nc4','.map','.nc','.dat','.txt','.asc','.ldd','.tbl',\
-              '.001','.002','.003','.004','.005','.006',\
-              '.007','.008','.009','.010','.011','.012')
-    
+    suffix = (
+        '/',
+        '_',
+        '.nc4',
+        '.map',
+        '.nc',
+        '.dat',
+        '.txt',
+        '.asc',
+        '.ldd',
+        '.tbl',
+        '.001',
+        '.002',
+        '.003',
+        '.004',
+        '.005',
+        '.006',
+        '.007',
+        '.008',
+        '.009',
+        '.010',
+        '.011',
+        '.012',
+    )
+
     if inputPath.startswith('/') or str(inputPath)[1] == ":":
         fullPath = str(inputPath)
     else:
-        if absolutePath.endswith('/'): 
+        if absolutePath.endswith('/'):
             absolutePath = str(absolutePath)
         else:
-			absolutePath = str(absolutePath)+'/'    
-        fullPath = str(absolutePath)+str(inputPath)
-    
+            absolutePath = str(absolutePath) + '/'
+        fullPath = str(absolutePath) + str(inputPath)
+
     if completeFileName:
-        if fullPath.endswith(suffix): 
+        if fullPath.endswith(suffix):
             fullPath = str(fullPath)
-    	else:
-            fullPath = str(fullPath)+'/'    
+        else:
+            fullPath = str(fullPath) + '/'
 
-    return fullPath    		
+    return fullPath
 
-# def findISIFileName(year,model,rcp,prefix,var):
+# def findISIFileName(year, model, rcp, prefix, var):
 #     histYears = [1951,1961,1971,1981,1991,2001]
 #     sYears = [2011,2021,2031,2041,2051,2061,2071,2081,2091]
 #     rcpStr = rcp
@@ -1218,7 +1238,7 @@ def getMapAttributesALL(cloneMap,arcDegree=True):
     cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
 
     if err !=None or cOut == []:
-        print "Something wrong with mattattr in VirtualOS, maybe clone Map does not exist ? "
+        print("Something wrong with mattattr in VirtualOS, maybe clone Map does not exist ? ")
         sys.exit()
     cellsize = float(cOut.split()[7])
     if arcDegree == True: cellsize = round(cellsize * 360000.)/360000.

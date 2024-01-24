@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 # AquaCrop crop growth model
 
 import numpy as np
@@ -8,6 +7,7 @@ import numpy as np
 import VirtualOS as vos
 
 import logging
+
 logger = logging.getLogger(__name__)
 
 class CarbonDioxide(object):

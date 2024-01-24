@@ -69,7 +69,7 @@ class Groundwater(object):
                         total_wait_time += wait_time
 
                     if not exists:
-                        print "groundwater file doesn't exist and maximum wait time exceeded"
+                        print ("groundwater file doesn't exist and maximum wait time exceeded")
                         raise   # TODO: make error class
 
                     self.var.zGW = vos.netcdf2PCRobjCloneWithoutTime(gwFileNC,
