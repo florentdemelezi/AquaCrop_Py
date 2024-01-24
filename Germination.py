@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 # AquaCrop crop growth model
-
 import numpy as np
 
 import logging
